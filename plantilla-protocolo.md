@@ -22,8 +22,11 @@ El experimento se diseña, no se ejecuta: los datos de la sección 9 son una pla
 
 *¿Qué recibe el tratamiento? ¿Cuántas unidades se incluyen?*
 
-- Unidad:
-- Número de unidades y justificación:
+- **Unidad:** la **semana-tienda**: una tienda de RetailAndina durante una semana (lunes a domingo). Es lo que recibe el tratamiento: en esa semana el producto está o no en el pasillo principal. La tienda es el **bloque**: cada tienda aporta 4 unidades.
+- **Número de unidades y justificación:** 10 tiendas × 4 semanas = **N = 40 unidades** (20 con tratamiento y 20 de control). Las 10 tiendas se reparten en 7 ciudades (Quito, Guayaquil, Cuenca, Ambato, Manta, Loja y Machala) para cubrir regiones y tamaños distintos.
+  - Cada tienda es su propio control, así que se elimina la variación entre tiendas, que es la mayor fuente de ruido.
+  - Potencia: con 10 pares de tiendas, una desviación estándar de las diferencias supuesta de 110 unidades por semana (supuesto de planificación, tomado de la simulación; no es un dato real) y α = 0,05 bilateral, la t pareada detecta una diferencia de 110 unidades por semana (≈ 10 %) con potencia ≈ 0,80.
+  - Cuatro semanas permiten 2 contra 2 en cada tienda sin tener el producto fuera de su lugar habitual por mucho tiempo, y el costo operativo es bajo (se mueve un solo producto).
 
 ## 3. Factor, niveles y tratamiento
 
