@@ -1,0 +1,41 @@
+tienda,semana,ubicacion
+Quito Norte,1,habitual
+Quito Norte,2,pasillo_principal
+Quito Norte,3,habitual
+Quito Norte,4,pasillo_principal
+Quito Sur,1,pasillo_principal
+Quito Sur,2,pasillo_principal
+Quito Sur,3,habitual
+Quito Sur,4,habitual
+Guayaquil Centro,1,habitual
+Guayaquil Centro,2,habitual
+Guayaquil Centro,3,pasillo_principal
+Guayaquil Centro,4,pasillo_principal
+Guayaquil Norte,1,pasillo_principal
+Guayaquil Norte,2,habitual
+Guayaquil Norte,3,habitual
+Guayaquil Norte,4,pasillo_principal
+Cuenca Centro,1,habitual
+Cuenca Centro,2,pasillo_principal
+Cuenca Centro,3,pasillo_principal
+Cuenca Centro,4,habitual
+Cuenca Sur,1,pasillo_principal
+Cuenca Sur,2,pasillo_principal
+Cuenca Sur,3,habitual
+Cuenca Sur,4,habitual
+Ambato Centro,1,pasillo_principal
+Ambato Centro,2,habitual
+Ambato Centro,3,pasillo_principal
+Ambato Centro,4,habitual
+Manta,1,habitual
+Manta,2,pasillo_principal
+Manta,3,pasillo_principal
+Manta,4,habitual
+Loja,1,habitual
+Loja,2,pasillo_principal
+Loja,3,pasillo_principal
+Loja,4,habitual
+Machala,1,pasillo_principal
+Machala,2,pasillo_principal
+Machala,3,habitual
+Machala,4,habitual

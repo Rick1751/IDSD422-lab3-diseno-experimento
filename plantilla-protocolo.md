@@ -47,7 +47,66 @@ El experimento se diseña, no se ejecuta: los datos de la sección 9 son una pla
 
 *¿Cómo se asignan las unidades a los grupos? ¿Por qué es necesaria?*
 
-- **Línea de código de la asignación (Python o R):** escribe el comando que asigna al azar tus N unidades a los dos grupos (tratamiento y control) y ejecútalo con semilla. Incluye el resultado de una corrida y explica por qué el sorteo reparte los factores desconocidos entre los grupos.
+- **Método:** aleatorización por bloques, con la tienda como bloque. Dentro de cada tienda se sortean sin reemplazo **2 de las 4 semanas** para el pasillo principal (tratamiento); las otras 2 quedan en la ubicación habitual (control). El sorteo lo hace el equipo de BI con código y semilla, antes de empezar, y se guarda en `plantillas/asignacion_aleatoria.csv`; los gerentes de tienda solo ejecutan el calendario.
+- **Por qué es necesaria:** si cada gerente eligiera las semanas, el efecto de la ubicación quedaría mezclado con ese criterio (por ejemplo, poner el producto en pasillo principal justo en semanas de quincena). El sorteo reparte al azar, entre los dos grupos, los factores conocidos y también los desconocidos (clima, eventos locales, hábitos de compra, tendencia semanal), de modo que en promedio ambos grupos son comparables y la diferencia se atribuye a la ubicación. El bloque por tienda asegura 2 + 2 en cada una. Siguiendo la regla del curso: quien asigna con código es el investigador, por lo tanto es un experimento y no un estudio observacional.
+- **Línea de código de la asignación (Python):**
+
+```python
+import numpy as np
+rng = np.random.default_rng(1234597)   # semilla fija: el sorteo es reproducible
+asignacion = {t: sorted(rng.choice([1, 2, 3, 4], size=2, replace=False).tolist()) for t in tiendas}
+```
+
+- **Corrida** (`python scripts/asignacion_aleatoria.py`, semilla 1234597; una segunda corrida da exactamente la misma salida):
+
+```text
+Semilla: 1234597
+
+Semanas en pasillo_principal por tienda (las otras 2 quedan en habitual):
+  Quito Norte       -> semanas [2, 4]
+  Quito Sur         -> semanas [1, 2]
+  Guayaquil Centro  -> semanas [3, 4]
+  Guayaquil Norte   -> semanas [1, 4]
+  Cuenca Centro     -> semanas [2, 3]
+  Cuenca Sur        -> semanas [1, 2]
+  Ambato Centro     -> semanas [1, 3]
+  Manta             -> semanas [2, 3]
+  Loja              -> semanas [2, 3]
+  Machala           -> semanas [1, 2]
+
+Unidades por grupo (N = 40):
+ubicacion
+habitual             20
+pasillo_principal    20
+
+Control de coherencia: unidades por tienda y grupo
+ubicacion         habitual  pasillo_principal
+tienda                                       
+Ambato Centro            2                  2
+Cuenca Centro            2                  2
+Cuenca Sur               2                  2
+Guayaquil Centro         2                  2
+Guayaquil Norte          2                  2
+Loja                     2                  2
+Machala                  2                  2
+Manta                    2                  2
+Quito Norte              2                  2
+Quito Sur                2                  2
+
+Balance de la semana (1-4) entre grupos: semana promedio por grupo
+ubicacion
+habitual             2.7
+pasillo_principal    2.3
+
+Tiendas en pasillo_principal por semana
+semana
+1    5
+2    7
+3    5
+4    3
+```
+
+- **Lectura:** el sorteo dejó 20 unidades por grupo y 2 + 2 en cada tienda. El azar no balancea perfecto la semana: el pasillo principal quedó con una semana promedio de 2,3 y el control de 2,7. Si las ventas crecen con las semanas, esto juega en contra del tratamiento (lo subestima un poco); por eso la semana se registra y se revisa en el análisis (secciones 7 y 8).
 
 ## 6. Respuesta y medición
 
