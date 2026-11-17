@@ -149,8 +149,64 @@ semana
 
 ## 9. Comparación en código (Python/R)
 
-*Escribe `scripts/comparacion_experimento.py` (o `.R`): debe cargar `plantillas/registro_experimento.csv` y calcular el promedio de `ventas_producto` por `ubicacion`. Incluye la salida y responde:*
+Se usó **Python**: `scripts/comparacion_experimento.py` (TODOs completados) carga `plantillas/registro_experimento.csv` y calcula el promedio de `ventas_producto` por `ubicacion`. Se ejecuta desde la raíz del repositorio con `python scripts/comparacion_experimento.py` y su salida es:
 
-- ¿Qué grupo muestra mayor venta promedio en la plantilla?
-- ¿Por qué con 4 filas no se puede concluir nada sobre el efecto de la ubicación?
-- Si el experimento se ejecutara con tu protocolo, ¿qué le faltaría a este análisis para ser justo?
+```text
+Registro cargado:
+          tienda  semana         ubicacion  ventas_producto promocion_simultanea  notas
+     Quito Norte       1 pasillo_principal             1250                   no    NaN
+       Quito Sur       1          habitual              980                   no    NaN
+Guayaquil Centro       1 pasillo_principal             1420                   si    NaN
+ Guayaquil Norte       1          habitual             1100                   no    NaN
+
+Promedio de ventas_producto por ubicacion:
+ubicacion
+habitual             1040.0
+pasillo_principal    1335.0
+
+Número de registros por grupo:
+ubicacion
+pasillo_principal    2
+habitual             2
+
+Interpretación:
+- Con 4 filas (2 por grupo, 4 tiendas distintas, todas en la semana 1) la diferencia
+  entre promedios no prueba nada: cada grupo mezcla tiendas distintas y un solo
+  registro pesa 50 % del promedio; además una fila tiene promoción simultánea.
+- Al análisis le faltarían: más unidades, comparar dentro de cada tienda (pareado),
+  incertidumbre (IC 95 % o prueba) y excluir o ajustar las semanas con promoción.
+```
+
+- **¿Qué grupo muestra mayor venta promedio en la plantilla?** El pasillo principal: 1335 contra 1040 unidades (295 más). Es solo una descripción de 4 filas.
+- **¿Por qué con 4 filas no se puede concluir nada sobre el efecto de la ubicación?** Cada grupo tiene solo 2 registros de tiendas distintas, todas de la semana 1: un solo dato pesa el 50 % del promedio y cada tienda aparece en un solo grupo, así que la diferencia se mezcla con el nivel propio de ventas de cada tienda. Además una de las 4 filas tiene promoción simultánea. Con tan pocos datos no se puede calcular la variabilidad ni saber si la diferencia es mayor que lo esperable por azar.
+- **Si el experimento se ejecutara con tu protocolo, ¿qué le faltaría a este análisis para ser justo?**
+  - Las 40 unidades asignadas al azar (no 4 filas sin sorteo).
+  - Comparar dentro de cada tienda (diferencia pareada), para quitar el efecto de cada tienda.
+  - Medir la incertidumbre (desviación estándar de las diferencias, IC 95 % y t pareada) y no solo promedios.
+  - Excluir o ajustar las semanas con promoción, quiebre de stock u otros factores registrados, y revisar la semana.
+
+**Demostración con datos simulados.** Para mostrar cómo se analizaría un registro completo, `scripts/simulacion_experimento.py` toma la asignación de la sección 5 y simula las 40 ventas (nivel propio por tienda, tendencia semanal, ruido y una promoción registrada). **El efecto de +220 unidades lo fijamos nosotros al simular**, así que este resultado no es evidencia sobre RetailAndina: solo comprueba que el análisis pareado recupera un efecto conocido y entrega su intervalo (se guarda en `plantillas/resultado_simulacion.csv`).
+
+```text
+Unidades por grupo:
+ubicacion
+habitual             20
+pasillo_principal    20
+
+Promedio ingenuo por grupo (sin respetar el bloque tienda):
+ubicacion
+habitual             1118.6
+pasillo_principal    1335.4
+
+[Análisis pareado, todas las semanas]  tiendas = 10
+  Promedio de la diferencia (principal - habitual): 216.8 unidades/semana
+  Desviación estándar de las diferencias:           109.1
+  IC 95 %: [138.8 ; 294.8]   p (t pareada) = 0.000144
+
+[Sensibilidad: sin la semana con promoción]  tiendas = 10
+  Promedio de la diferencia (principal - habitual): 219.7 unidades/semana
+  Desviación estándar de las diferencias:           109.8
+  IC 95 %: [141.1 ; 298.3]   p (t pareada) = 0.000137
+```
+
+La diferencia estimada (≈ 217) queda cerca del efecto fijado (220), el IC 95 % no incluye el 0 y el resultado casi no cambia al excluir la semana con promoción. Con datos reales no sabríamos la respuesta de antemano; por eso importan la aleatorización y los controles de las secciones anteriores. (El archivo `scripts/comparacion_experimento.R` quedó sin completar porque se eligió Python.)
