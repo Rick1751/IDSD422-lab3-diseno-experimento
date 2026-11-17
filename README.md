@@ -38,3 +38,17 @@ El diseño se completa con código en dos momentos:
 La evaluación está detallada en `EVALUACION.md`.
 
 *Laboratorio 3, IDSD422, Estadística y Programación para Ciencia de Datos I, 2026-B.*
+
+## Cómo reproducir (entrega del equipo)
+
+Requisitos: Python 3.10 o superior y `pip install -r requirements.txt`. Todos los comandos se ejecutan desde la raíz del repositorio.
+
+```bash
+python scripts/asignacion_aleatoria.py       # sección 5: sorteo con semilla (crea plantillas/asignacion_aleatoria.csv)
+python scripts/comparacion_experimento.py    # sección 9: promedio por grupo sobre el registro de 4 filas
+python scripts/simulacion_experimento.py     # sección 9: demostración con datos simulados (efecto fijado por nosotros)
+python scripts/asignacion_ensayo_clinico.py  # bonus: asignación del ensayo de vacuna
+python scripts/generar_pdf.py                # informes/protocolo_lab3_RetailAndina.pdf (carátula + protocolo)
+```
+
+Se eligió Python; `scripts/comparacion_experimento.R` queda como plantilla sin completar. Los borradores previos están en `borradores/`.
