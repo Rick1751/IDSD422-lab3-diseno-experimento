@@ -210,3 +210,47 @@ pasillo_principal    1335.4
 ```
 
 La diferencia estimada (≈ 217) queda cerca del efecto fijado (220), el IC 95 % no incluye el 0 y el resultado casi no cambia al excluir la semana con promoción. Con datos reales no sabríamos la respuesta de antemano; por eso importan la aleatorización y los controles de las secciones anteriores. (El archivo `scripts/comparacion_experimento.R` quedó sin completar porque se eligió Python.)
+
+## Bonus: adaptación a un ensayo clínico (vacuna)
+
+El mismo diseño (unidad, factor, control, aleatorización, respuesta, controles y limitaciones) aplicado a una **vacuna candidata**. Los números son ilustrativos: en un ensayo real el tamaño se calcula con la incidencia esperada y la eficacia mínima que se quiere detectar.
+
+| Elemento | Ubicación de producto (RetailAndina) | Ensayo clínico de una vacuna |
+|---|---|---|
+| Hipótesis | Las ventas semanales son mayores con el producto en el pasillo principal que en su ubicación habitual. | La incidencia de enfermedad confirmada a 6 meses es menor en vacunados que en el grupo placebo. |
+| Unidad experimental | Semana-tienda (N = 40). | Participante adulto voluntario con consentimiento informado (N = 2000, ilustrativo). |
+| Factor y niveles | Ubicación: `pasillo_principal` / `habitual`. | Intervención: `vacuna` / `placebo`. |
+| Tratamiento | Producto en pasillo principal durante una semana, resto fijo. | 2 dosis (días 0 y 28) del nivel asignado, mismo esquema y volumen. |
+| Grupo de control | Ubicación habitual en la misma tienda. | Placebo (solución salina): controla el efecto placebo y la evolución natural de la enfermedad. |
+| Aleatorización | 2 de 4 semanas por tienda, con semilla. | 250 vacuna y 250 placebo por centro (bloque), con semilla (código abajo). |
+| Respuesta y medición | Unidades vendidas por semana, desde el POS; no hay ciego pleno. | Casos confirmados por PCR en 6 meses, juzgados por un comité independiente; **doble ciego**: participantes y evaluadores no conocen el grupo. |
+| Factores a controlar | Temporada, promociones, afluencia, stock, precio. | Edad, comorbilidades, centro, exposición al virus, vacunación previa (estratificación por centro y registro de las demás). |
+| Limitaciones | Arrastre, 4 semanas, un producto, 10 tiendas. | Seguimiento de 6 meses, voluntarios que no representan a niños o embarazadas, pérdidas de seguimiento. |
+
+Diferencias clave: en el ensayo sí es posible el doble ciego (con el placebo) y la unidad es una persona, por lo que hay requisitos éticos: consentimiento informado, aprobación de un comité de ética y monitoreo independiente de seguridad que puede detener el ensayo.
+
+Asignación aleatoria del ensayo (`python scripts/asignacion_ensayo_clinico.py`, semilla 2026):
+
+```python
+rng = np.random.default_rng(2026)
+grupos = rng.permutation(["vacuna"] * 250 + ["placebo"] * 250)   # una vez por centro
+```
+
+```text
+Participantes por centro y grupo (N = 2000):
+grupo     placebo  vacuna
+centro                   
+Centro A      250     250
+Centro B      250     250
+Centro C      250     250
+Centro D      250     250
+
+Primeros 6 participantes asignados:
+participante   centro   grupo
+       A-001 Centro A placebo
+       A-002 Centro A  vacuna
+       A-003 Centro A placebo
+       A-004 Centro A  vacuna
+       A-005 Centro A  vacuna
+       A-006 Centro A placebo
+```
