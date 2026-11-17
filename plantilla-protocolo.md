@@ -39,6 +39,10 @@ El experimento se diseña, no se ejecuta: los datos de la sección 9 son una pla
 
 *¿Cuál es la referencia sin tratamiento y qué rol cumple?*
 
+- **Control:** las semanas-tienda en que el producto estrella permanece en su **ubicación habitual**, sin ningún cambio (20 de las 40 unidades). Es la misma tienda que otras 2 semanas recibe el tratamiento.
+- **Rol:** es la referencia de lo que vende cada tienda cuando no se mueve el producto. Sin ella no se podría separar el efecto de la ubicación de la tendencia, la temporada o el nivel propio de cada tienda (un simple «antes y después» lo mezclaría todo). Como cada semana hay tiendas en ambos grupos a la vez, el control también absorbe lo que le pase a toda la cadena en esa semana.
+- **Igual atención:** en las semanas de control el equipo de la tienda también revisa el producto y su stock, sin moverlo, para que ambos grupos reciban el mismo contacto.
+
 ## 5. Aleatorización
 
 *¿Cómo se asignan las unidades a los grupos? ¿Por qué es necesaria?*
