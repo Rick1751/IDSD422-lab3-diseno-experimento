@@ -110,9 +110,10 @@ semana
 
 ## 6. Respuesta y medición
 
-- Variable respuesta:
-- Período de medición:
-- Quién registra y cómo (¿ciego?):
+- **Variable respuesta:** `ventas_producto` = unidades vendidas del producto estrella en la tienda durante la semana (lunes a domingo). Es cuantitativa y se mide una vez por semana-tienda. De forma informativa (no para decidir) se registra también las ventas totales de la tienda, para vigilar el efecto sobre otros productos.
+- **Período de medición:** 4 semanas consecutivas, de lunes a domingo, con las mismas fechas de inicio en las 10 tiendas. La gerencia las elige fuera de feriados largos y sin campañas planificadas; si no es posible, se registran como factor (sección 7).
+- **Quién registra y cómo (¿ciego?):** las ventas salen automáticamente del sistema de punto de venta (lectura de código de barras del producto) y el analista de BI las vuelca en `plantillas/registro_experimento.csv` (tienda, semana, ubicacion, ventas_producto, promocion_simultanea, notas). Los gerentes de tienda solo mueven el producto según el calendario y no registran ventas.
+  - **Ciego:** no es posible cegar al personal de tienda, que ve la góndola. La medición es objetiva y automática, lo que reduce el sesgo del observador, y el analista que calcula la comparación recibe los grupos con códigos («A» y «B») hasta terminar el análisis fijado de antemano. El límite es que el personal podría, sin querer, recomendar más el producto cuando está en el pasillo principal: se le instruye no cambiar su forma de atender y se anota cualquier incidencia en `notas`.
 
 ## 7. Factores a controlar (mínimo 4)
 
