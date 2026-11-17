@@ -1,6 +1,6 @@
 # Plantilla de protocolo — Experimento de ubicación de producto
 
-**Equipo:** <<COMPLETAR>> · **Integrantes:** <<COMPLETAR>> · **Fecha:** 18/11/2026
+**Equipo:** Individual · **Integrantes:** Ricardo Leon · **Fecha:** 18/11/2026
 
 **Repositorio (fork):** https://github.com/Rick1751/IDSD422-lab3-diseno-experimento
 
