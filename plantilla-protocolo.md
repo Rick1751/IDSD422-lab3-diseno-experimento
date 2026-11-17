@@ -1,12 +1,22 @@
 # Plantilla de protocolo — Experimento de ubicación de producto
 
-**Equipo:** ___ · **Integrantes:** ___ · **Fecha:** 27/10/2026
+**Equipo:** <<COMPLETAR>> · **Integrantes:** <<COMPLETAR>> · **Fecha:** 18/11/2026
 
-Completa cada sección. Usa commits por sección; la historia del repositorio se revisa.
+**Repositorio (fork):** https://github.com/Rick1751/IDSD422-lab3-diseno-experimento
+
+**Caso:** RetailAndina S.A. · IDSD422 · Estadística y Programación para Ciencia de Datos I · 2026-B · Práctica 3 (Tópico 3).
+El experimento se diseña, no se ejecuta: los datos de la sección 9 son una plantilla de formato y una simulación.
 
 ## 1. Pregunta e hipótesis
 
-*Hipótesis que el experimento pueda confirmar o refutar (formúlela como una comparación medible entre los grupos).*
+**Pregunta:** ¿cambiar la ubicación del producto estrella de RetailAndina al pasillo principal aumenta sus ventas semanales?
+
+**Hipótesis (comparación medible entre los grupos):** durante 4 semanas consecutivas, las ventas semanales del producto estrella son mayores en las semanas-tienda en que se exhibe en el pasillo principal (tratamiento) que en las semanas-tienda en que permanece en su ubicación habitual (control), comparando dentro de cada tienda.
+
+- **Parámetro:** μ_dif = promedio, sobre las 10 tiendas, de [ventas semanales promedio en pasillo principal − ventas semanales promedio en ubicación habitual].
+- **H0:** μ_dif = 0 (la ubicación no cambia las ventas). **H1:** μ_dif > 0 (el pasillo principal las aumenta).
+- **Respuesta y período:** unidades vendidas del producto estrella por semana-tienda, durante 4 semanas consecutivas.
+- **Cómo se confirma o refuta:** se contrasta con una t pareada por tienda, bilateral y con α = 0,05 (más exigente que la unilateral). Se confirma si se rechaza H0 con diferencia positiva; se refuta si el intervalo de confianza del 95 % incluye el 0 o es negativo. Para decidir mover inventario, además, la diferencia debería ser de al menos 110 unidades por semana (≈ 10 % de las ventas habituales).
 
 ## 2. Unidad experimental
 
