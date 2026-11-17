@@ -119,10 +119,14 @@ semana
 
 | Factor a controlar | Cómo se controla o registra |
 |---|---|
-| 1. | |
-| 2. | |
-| 3. | |
-| 4. | |
+| 1. Temporada y feriados (quincena, vacaciones, fechas escolares) | Todas las tiendas corren las mismas 4 semanas calendario y se evita iniciar en feriado largo. La aleatorización dentro de cada tienda reparte las semanas entre grupos y la semana (1 a 4) se registra para revisarla en el análisis. |
+| 2. Promociones | Control: no se permiten promociones, descuentos ni publicidad del producto estrella (ni de sus sustitutos directos) durante las 4 semanas. Si ocurre una promoción no planificada, se registra en `promocion_simultanea` (sí/no) y el análisis se repite sin esas filas. |
+| 3. Afluencia de clientes | Registro: tickets o visitas por semana-tienda desde el POS o el contador de puerta, para revisar si el tráfico difiere entre grupos. El bloque por tienda mantiene el mismo local y el mismo público en ambos niveles. |
+| 4. Stock disponible | Control: reposición garantizada con un inventario mínimo, igual para ambos niveles. Registro: los días con quiebre de stock se anotan en `notas` y esas semanas se analizan aparte. |
+| 5. Precio | Control: el precio del producto queda fijo en todas las tiendas durante el experimento, sin cambios de lista. |
+| 6. Espacio y presentación (frentes, señalética, altura del estante) | Control: mismo número de frentes y misma señalética en ambos niveles; solo cambia la ubicación. |
+| 7. Tienda (tamaño, ciudad, nivel socioeconómico) | Bloqueo: cada tienda recibe los dos niveles (2 + 2) y el análisis compara dentro de cada tienda (pareado). |
+| 8. Eventos locales, clima y competencia | Registro: se anotan en `notas` por semana-tienda; la aleatorización los reparte entre grupos. |
 
 ## 8. Limitaciones del diseño
 
