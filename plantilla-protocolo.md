@@ -30,9 +30,10 @@ El experimento se diseña, no se ejecuta: los datos de la sección 9 son una pla
 
 ## 3. Factor, niveles y tratamiento
 
-- **Factor** (variable manipulada):
-- **Niveles** (valores del factor):
-- **Tratamiento** (combinación asignada):
+- **Factor** (variable manipulada): ubicación del producto estrella dentro de la tienda.
+- **Niveles** (valores del factor): 2 niveles: `pasillo_principal` y `habitual` (el estante donde ya está hoy).
+- **Tratamiento** (combinación asignada): cada semana-tienda recibe exactamente un nivel. El tratamiento es **exhibir el producto estrella en el pasillo principal durante esa semana** (nivel `pasillo_principal`) con todo lo demás fijo: mismo precio, mismo número de frentes de góndola, misma señalética y sin promoción especial. El pasillo no es el tratamiento sino un nivel del factor; el tratamiento es lo que recibe la unidad: el nivel más las condiciones fijas.
+- **Coherencia con la hipótesis:** el investigador manipula un solo factor y solo cambia la ubicación; la respuesta (ventas) se compara entre sus dos niveles.
 
 ## 4. Grupo de control
 
