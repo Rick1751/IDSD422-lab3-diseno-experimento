@@ -132,6 +132,21 @@ semana
 
 *¿Qué podría invalidar el experimento si no se controla? ¿Qué no se podrá concluir?*
 
+**Qué podría invalidarlo si no se controla**
+
+- **Incumplimiento del protocolo:** un gerente que no mueve el producto en la semana asignada, promociones no registradas o quiebres de stock. Todo se registra; si afecta a muchas unidades, el diseño pierde validez y habría que repetirlo.
+- **Arrastre entre semanas (carryover):** un cliente que compró el producto en el pasillo principal puede seguir buscándolo ahí o comprándolo por hábito en una semana de ubicación habitual, lo que achica la diferencia. No hay período de lavado entre cambios; solo se puede revisar con un análisis de sensibilidad.
+- **Desbalance por azar:** con 40 unidades el sorteo no balancea perfecto las semanas (en la corrida, semana promedio 2,3 contra 2,7). Se registra la semana y se revisa en el análisis.
+- **Personal no ciego:** puede influir sin querer en la venta del producto (sección 6).
+
+**Qué no se podrá concluir**
+
+- **Horizonte corto:** 4 semanas no dicen si el efecto dura; puede ser un efecto de novedad que desaparece cuando el cambio es permanente.
+- **Rentabilidad total:** se mide el producto estrella, no el resto de la tienda; no se sabe si el producto desplazado o los demás productos venden menos (canibalización). Más unidades del producto no equivalen a más ganancia para la tienda.
+- **Generalización:** 10 tiendas elegidas por conveniencia (no una muestra aleatoria de la cadena) y un solo producto; no se puede extender a otros productos, otras tiendas ni otros pasillos.
+- **Mecanismo y precisión:** no se sabrá por qué funciona (visibilidad o flujo de clientes) y con 10 tiendas el intervalo de confianza será amplio; la potencia de 0,80 depende de un supuesto de variabilidad no verificado.
+- **Datos de este laboratorio:** el registro de 4 filas y la simulación de la sección 9 no son evidencia sobre RetailAndina; la simulación incluye un efecto que fijamos nosotros.
+
 ## 9. Comparación en código (Python/R)
 
 *Escribe `scripts/comparacion_experimento.py` (o `.R`): debe cargar `plantillas/registro_experimento.csv` y calcular el promedio de `ventas_producto` por `ubicacion`. Incluye la salida y responde:*
